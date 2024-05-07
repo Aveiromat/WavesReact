@@ -1,93 +1,64 @@
-import Clothing from '../../models/Clothing'
+import { useEffect, useState } from 'react'
+
 import Banner from '../../components/Banner'
 import ProductsList from '../../components/ProductsList'
 
 import bagvans from '../../assets/images/vans.webp'
 
-const promocoes: Clothing[] = [
-  {
-    id: 1,
-    category: 'like',
-    description: 'teste32131',
-    title: 'bag vans',
-    type: 'bag',
-    infos: ['10%', 'R$ 250,00'],
-    image: bagvans
-  },
-  {
-    id: 2,
-    category: 'like',
-    description: 'teste32131',
-    title: 'bag vans2',
-    type: 'bag',
-    infos: ['10%', 'R$ 250,00'],
-    image: bagvans
-  },
-  {
-    id: 3,
-    category: 'like',
-    description: 'teste32131',
-    title: 'bag vans3',
-    type: 'bag',
-    infos: ['10%', 'R$ 250,00'],
-    image: bagvans
-  },
-  {
-    id: 4,
-    category: 'like',
-    description: 'teste32131',
-    title: 'bag vans4',
-    type: 'bag',
-    infos: ['10%', 'R$ 250,00'],
-    image: bagvans
-  }
-]
+export interface GalleryItem {
+  type: 'image' | 'video'
+  url: string
+}
 
-const lancamentos: Clothing[] = [
-  {
-    id: 1,
-    category: 'like',
-    description: 'teste32131',
-    title: 'bag vans',
-    type: 'bag',
-    infos: ['10%', 'R$ 250,00'],
-    image: bagvans
-  },
-  {
-    id: 2,
-    category: 'like',
-    description: 'teste32131',
-    title: 'bag vans2',
-    type: 'bag',
-    infos: ['10%', 'R$ 250,00'],
-    image: bagvans
-  },
-  {
-    id: 3,
-    category: 'like',
-    description: 'teste32131',
-    title: 'bag vans3',
-    type: 'bag',
-    infos: ['10%', 'R$ 250,00'],
-    image: bagvans
-  },
-  {
-    id: 4,
-    category: 'like',
-    description: 'teste32131',
-    title: 'bag vans4',
-    type: 'bag',
-    infos: ['10%', 'R$ 250,00'],
-    image: bagvans
+export type Clothing = {
+  id: number
+  name: string
+  description: string
+  release_date?: string
+  prices: {
+    discount?: number
+    old?: number
+    current?: number
   }
-]
+  details: {
+    category: string
+    system: string
+    developer: string
+    publisher: string
+    languages: string[]
+  }
+  media: {
+    thumbnail: string
+    cover: string
+    gallery: GalleryItem[]
+  }
+}
 
-const Home = () => (
-  <>
-    <Banner />
-    <ProductsList clothes={promocoes} title="Promoções" background="cor2" />
-    <ProductsList clothes={lancamentos} title="Lançamentos" background="cor3" />
-  </>
-)
+const Home = () => {
+  const [promocoes, setPromocoes] = useState<Clothing[]>([])
+  const [lancamentos, setEmBreve] = useState<Clothing[]>([])
+
+  useEffect(() => {
+    fetch('https://fake-api-tau.vercel.app/api/eplay/promocoes')
+      .then((res) => res.json())
+      .then((res) => setPromocoes(res))
+
+    fetch('https://fake-api-tau.vercel.app/api/eplay/em-breve')
+      .then((res) => res.json())
+      .then((res) => setEmBreve(res))
+  }, [])
+
+  return (
+    <>
+      <Banner />
+      <ProductsList clothes={promocoes} title="Promoções" background="cor2" />
+      <ProductsList
+        clothes={lancamentos}
+        title="Lançamentos"
+        background="cor3"
+      />
+    </>
+  )
+}
 
 export default Home

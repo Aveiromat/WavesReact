@@ -7,22 +7,22 @@ import { Card } from '../Product/styles'
 export const Container = styled.section<Omit<Props, 'title' | 'clothes'>>`
   padding: 32px 0;
   background-color: ${(props) =>
-    props.background === 'cor2' ? cores.cor2 : cores.cor3};
+    props.background === 'gray' ? cores.cor2 : cores.cor3};
 
   ${Card} {
     background-color: ${(props) =>
-      props.background === 'cor2' ? cores.cor3 : cores.cor2};
+      props.background === 'gray' ? cores.cor3 : cores.cor2};
   }
-`
 
-export const List = styled.ul`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 24px;
-  margin-top: 40px;
+  p {
+    font-size: 14px;
+    line-height: 22px;
+    max-width: 640px;
+  }
 `
 
 export const Title = styled.h2`
   font-size: 18px;
   font-weight: bold;
+  margin-bottom: 40px;
 `
