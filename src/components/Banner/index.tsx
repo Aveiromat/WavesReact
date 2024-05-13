@@ -8,14 +8,10 @@ import { useEffect, useState } from 'react'
 
 import { formataPreco } from '../ProductsList'
 
-const Banner = () => {
-  const [clothing, setClothing] = useState<Clothing>()
+import { useGetFeaturedClothesQuery } from '../../services/api'
 
-  useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/eplay/destaque')
-      .then((res) => res.json())
-      .then((res) => setClothing(res))
-  }, [])
+const Banner = () => {
+  const { data: clothing, isLoading } = useGetFeaturedClothesQuery()
 
   if (!clothing) {
     return <h3>Carregando...</h3>

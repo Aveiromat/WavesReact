@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import Banner from '../../components/Banner'
 import ProductsList from '../../components/ProductsList'
 
-import bagvans from '../../assets/images/vans.webp'
+import { useGetOnSaleQuery, useGetSoonQuery } from '../../services/api'
 
 export interface GalleryItem {
   type: 'image' | 'video'
@@ -35,30 +35,27 @@ export type Clothing = {
 }
 
 const Home = () => {
-  const [promocoes, setPromocoes] = useState<Clothing[]>([])
-  const [lancamentos, setEmBreve] = useState<Clothing[]>([])
+  const { data: onSaleClothes } = useGetOnSaleQuery()
+  const { data: soonClothes } = useGetSoonQuery()
 
-  useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/eplay/promocoes')
-      .then((res) => res.json())
-      .then((res) => setPromocoes(res))
-
-    fetch('https://fake-api-tau.vercel.app/api/eplay/em-breve')
-      .then((res) => res.json())
-      .then((res) => setEmBreve(res))
-  }, [])
-
-  return (
-    <>
-      <Banner />
-      <ProductsList clothes={promocoes} title="Promoções" background="cor2" />
-      <ProductsList
-        clothes={lancamentos}
-        title="Lançamentos"
-        background="cor3"
-      />
-    </>
-  )
+  if (onSaleClothes && soonClothes) {
+    return (
+      <>
+        <Banner />
+        <ProductsList
+          clothes={onSaleClothes}
+          title="Promoções"
+          background="cor2"
+        />
+        <ProductsList
+          clothes={soonClothes}
+          title="Lançamentos"
+          background="cor3"
+        />
+      </>
+    )
+  }
+  return <h4>Carregando...</h4>
 }
 
 export default Home
