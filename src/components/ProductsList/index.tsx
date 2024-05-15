@@ -7,6 +7,7 @@ export type Props = {
   title: string
   background: 'cor3' | 'cor2'
   clothes: Clothing[]
+  id?: string
 }
 
 export const formataPreco = (preco = 0) => {
@@ -16,7 +17,7 @@ export const formataPreco = (preco = 0) => {
   }).format(preco)
 }
 
-const ProductsList = ({ background, title, clothes }: Props) => {
+const ProductsList = ({ background, title, clothes, id }: Props) => {
   const getClothingTags = (clothing: Clothing) => {
     const tags = []
 
@@ -36,7 +37,7 @@ const ProductsList = ({ background, title, clothes }: Props) => {
   }
 
   return (
-    <Container background={background}>
+    <Container id={id} background={background}>
       <div className="container">
         <h2>{title}</h2>
         <List>

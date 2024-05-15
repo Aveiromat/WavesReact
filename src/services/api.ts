@@ -22,7 +22,7 @@ const api = createApi({
       query: () => 'esportes'
     }),
     getSimulationClothes: builder.query<Clothing[], void>({
-      query: () => 'simulucao'
+      query: () => 'simulacao'
     }),
     getFightClothes: builder.query<Clothing[], void>({
       query: () => 'luta'

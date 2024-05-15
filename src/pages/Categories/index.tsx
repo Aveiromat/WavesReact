@@ -1,9 +1,5 @@
 import ProductsList from '../../components/ProductsList'
 
-import bagvans from '../../assets/images/vans.webp'
-import { Clothing } from '../Home'
-import { useEffect, useState } from 'react'
-
 import {
   useGetActionClothesQuery,
   useGetFightClothesQuery,
@@ -32,26 +28,31 @@ const Categories = () => {
           clothes={actionClothes}
           title="Promoções"
           background="cor2"
+          id="action"
         />
         <ProductsList
           clothes={sportsClothes}
           title="Lançamentos"
           background="cor3"
+          id="sports"
         />
         <ProductsList
           clothes={simulationClothes}
           title="Promoções"
           background="cor2"
+          id="simulation"
         />
         <ProductsList
           clothes={fightClothes}
           title="Lançamentos"
           background="cor3"
+          id="fight"
         />
         <ProductsList
           clothes={rpgClothes}
           title="Lançamentos"
           background="cor3"
+          id="rpg"
         />
       </>
     )
