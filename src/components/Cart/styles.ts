@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 import { TagContainer } from '../Tag/styles'
 import { ButtonContainer } from '../Button/styles'
 
-import fechar from '../../assets/images/fechar.png'
+import closeIcon from '../../assets/images/fechar.png'
 
 export const Overlay = styled.div`
   position: absolute;
@@ -31,7 +31,7 @@ export const CartContainer = styled.div`
 `
 
 export const Sidebar = styled.aside`
-  background-color: ${cores.cor3};
+  background-color: ${colors.color3};
   z-index: 1;
   padding: 40px 16px 0 16px;
   max-width: 360px;
@@ -40,34 +40,41 @@ export const Sidebar = styled.aside`
   ${ButtonContainer} {
     max-width: 100%;
     width: 100%;
-    color: ${cores.cor3};
+    color: ${colors.color3};
+  }
+
+  .empty-text {
+    font-size: 14px;
+    line-height: 22px;
+    color: ${colors.color3}
+    text-align: center;
   }
 `
 
 export const Prices = styled.p`
   font-weight: bold;
   font-size: 14px;
-  color: ${cores.cor1};
+  color: ${colors.color1};
   margin-bottom: 24px;
 
   span {
     display: block;
     font-size: 12px;
-    color: ${cores.cor1};
+    color: ${colors.color1};
   }
 `
 
 export const Quantity = styled.p`
   font-weight: bold;
   font-size: 16px;
-  color: ${cores.cor1};
+  color: ${colors.color1};
   margin-top: 32px;
   margin-bottom: 16px;
 `
 
 export const CartItem = styled.li`
   display: flex;
-  border-bottom: 2px solid ${cores.cor2};
+  border-bottom: 2px solid ${colors.color2};
   padding: 8px 0;
   position: relative;
 
@@ -79,27 +86,27 @@ export const CartItem = styled.li`
   }
 
   h3 {
-    color: ${cores.cor1};
+    color: ${colors.color1};
     font-weight: bold;
     font-size: 16px;
   }
 
   span {
     display: block;
-    color: ${cores.cor1};
+    color: ${colors.color1};
     font-weight: bold;
     font-size: 14px;
   }
 
   ${TagContainer} {
     margin-right: 8px;
-    color: ${cores.cor3};
+    color: ${colors.color3};
     margin-top: 8px;
     margin-bottom: 16px;
   }
 
   button {
-    background-image: url(${fechar});
+    background-image: url(${closeIcon});
     width: 16px;
     height: 16px;
     border: none;

@@ -1,13 +1,11 @@
-import { Clothing } from '../../pages/Home'
 import Button from '../Button'
 import Tag from '../Tag'
 
-import { formataPreco } from '../ProductsList'
-
-import { Banner, Infos } from './styles'
+import * as S from './styles'
 import { useDispatch } from 'react-redux'
 
 import { add, open } from '../../store/reducers/cart'
+import { parseToBrl } from '../../utils'
 
 type Props = {
   clothing: Clothing
@@ -22,21 +20,21 @@ const Hero = ({ clothing }: Props) => {
   }
 
   return (
-    <Banner style={{ backgroundImage: `url(${clothing.media.cover})` }}>
+    <S.Banner style={{ backgroundImage: `url(${clothing.media.cover})` }}>
       <div className="container">
         <div>
           <Tag>{clothing.details.category}</Tag>
           <Tag>{clothing.details.system}</Tag>
         </div>
-        <Infos>
+        <S.Infos>
           <h2>{clothing.name}</h2>
           <p>
             {clothing.prices.discount && (
-              <span>{formataPreco(clothing.prices.old)}</span>
+              <span>{parseToBrl(clothing.prices.old)}</span>
             )}
 
             {clothing.prices.current && (
-              <>Por {formataPreco(clothing.prices.current)}</>
+              <>Por {parseToBrl(clothing.prices.current)}</>
             )}
           </p>
           {clothing.prices.current && (
@@ -49,9 +47,9 @@ const Hero = ({ clothing }: Props) => {
               Adicionar ao carrinho
             </Button>
           )}
-        </Infos>
+        </S.Infos>
       </div>
-    </Banner>
+    </S.Banner>
   )
 }
 

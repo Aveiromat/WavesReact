@@ -3,18 +3,20 @@ import { useParams } from 'react-router-dom'
 import Hero from '../../components/Hero'
 import Section from '../../components/Section'
 import Gallery from '../../components/Gallery'
+import Loader from '../../components/Loader'
 
-import residentEvil from '../../assets/images/resident.png'
-import { useEffect, useState } from 'react'
-import { Clothing } from '../Home'
 import { useGetClothingQuery } from '../../services/api'
 
+type ClothingParams = {
+  id: string
+}
+
 const Product = () => {
-  const { id } = useParams()
-  const { data: clothing } = useGetClothingQuery(id!)
+  const { id } = useParams() as ClothingParams
+  const { data: clothing } = useGetClothingQuery(id)
 
   if (!clothing) {
-    return <h3>Carregando...</h3>
+    return <Loader />
   }
 
   return (

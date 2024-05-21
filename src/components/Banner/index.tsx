@@ -1,32 +1,29 @@
-import { Imagem, Titulo, Precos } from './styles'
-
-import bannerImg from '../../assets/images/banner.png'
 import Tag from '../Tag'
 import Button from '../Button'
-import { Clothing } from '../../pages/Home'
-import { useEffect, useState } from 'react'
 
-import { formataPreco } from '../ProductsList'
-
+import { parseToBrl } from '../../utils'
 import { useGetFeaturedClothesQuery } from '../../services/api'
+import Loader from '../Loader'
+
+import * as S from './styles'
 
 const Banner = () => {
-  const { data: clothing, isLoading } = useGetFeaturedClothesQuery()
+  const { data: clothing } = useGetFeaturedClothesQuery()
 
   if (!clothing) {
-    return <h3>Carregando...</h3>
+    return <Loader />
   }
 
   return (
-    <Imagem style={{ backgroundImage: `url(${clothing.media.cover})` }}>
+    <S.Image style={{ backgroundImage: `url(${clothing.media.cover})` }}>
       <div className="container">
         <Tag size="big">Destaque do dia</Tag>
         <div>
-          <Titulo>{clothing.name}</Titulo>
-          <Precos>
-            De <span>{formataPreco(clothing.prices.old)}</span> <br />
-            por apenas {formataPreco(clothing.prices.current)}
-          </Precos>
+          <S.Title>{clothing.name}</S.Title>
+          <S.Prices>
+            De <span>{parseToBrl(clothing.prices.old)}</span> <br />
+            por apenas {parseToBrl(clothing.prices.current)}
+          </S.Prices>
         </div>
         <Button
           type="link"
@@ -36,7 +33,7 @@ const Banner = () => {
           Aproveitar
         </Button>
       </div>
-    </Imagem>
+    </S.Image>
   )
 }
 
