@@ -14,9 +14,7 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <GlobalCss />
-        <div className="container">
-          <Header />
-        </div>
+        <Header />
         <Rotas />
         <Footer />
         <Cart />
