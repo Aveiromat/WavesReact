@@ -11,11 +11,19 @@ export const Links = styled.ul`
   }
 `
 
+export const Border = styled.div`
+  border: 1px solid black;
+`
+
 export const HeaderBar = styled.header`
   background-color: ${colors.color3};
-  padding: 24px;
-  border-radius: 16px;
-  margin-bottom: 80px;
+  padding: 16px 24px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  z-index: 1000;
+  border-bottom: 2px solid #000;
 
   a,
   span {
@@ -86,22 +94,35 @@ export const CartButton = styled.span`
     }
 `
 
-export const Logo = styled.img`
-  max-height: 23px;
-`
+export const Logo = styled.img``
 
 export const Hamburguer = styled.div`
   width: 32px;
 
   span {
-    height: 2px;
+    height: 4px;
     display: block;
     width: 100%;
     background-color: ${colors.color1};
-    margin-bottom: 4px;
+    margin: 4px 0;
+    border-radius: 8px;
   }
 
   @media (min-width: ${breakpoints.tablet}) {
     display: none;
   }
+`
+
+export const Right = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+`
+
+export const Nav = styled.nav`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
