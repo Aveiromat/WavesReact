@@ -4,6 +4,7 @@ import { TagContainer } from '../Tag/styles'
 import { ButtonContainer } from '../Button/styles'
 
 import closeIcon from '../../assets/images/fechar.png'
+import lixeira from '../../assets/images/lixeira.png'
 
 export const Overlay = styled.div`
   position: absolute;
@@ -33,9 +34,10 @@ export const CartContainer = styled.div`
 export const Sidebar = styled.aside`
   background-color: ${colors.color3};
   z-index: 1;
-  padding: 40px 16px 0 16px;
+  padding: 104px 16px 0 16px;
   max-width: 360px;
   width: 100%;
+  position: relative;
 
   ${ButtonContainer} {
     max-width: 100%;
@@ -46,8 +48,22 @@ export const Sidebar = styled.aside`
   .empty-text {
     font-size: 14px;
     line-height: 22px;
-    color: ${colors.color3}
+    color: ${colors.color1};
     text-align: center;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 80px;
+    right: 8px;
+    width: 20px;
+    height: 20px;
+    background: url(${closeIcon}) no-repeat center center;
+    background-size: contain;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    z-index: 2;
   }
 `
 
@@ -106,13 +122,15 @@ export const CartItem = styled.li`
   }
 
   button {
-    background-image: url(${closeIcon});
-    width: 16px;
-    height: 16px;
+    background-image: url(${lixeira});
+    width: 20px; /* Aumente o tamanho para garantir que o ícone seja visível */
+    height: 20px;
     border: none;
     background-color: transparent;
     position: absolute;
-    top: 8px;
-    right: 0;
+    bottom: 10px;
+    right: 8px; /* Ajuste o espaçamento para garantir que o ícone esteja visível */
+    background-size: contain;
+    background-repeat: no-repeat;
   }
 `

@@ -17,20 +17,20 @@ export const Border = styled.div`
 
 export const HeaderBar = styled.header`
   background-color: ${colors.color3};
-  padding: 16px 24px;
+  padding: 16px;
   position: sticky;
   top: 0;
   left: 0;
   background-color: #fff;
   z-index: 1000;
-  border-bottom: 2px solid #000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
   a,
   span {
     color: ${colors.color1};
     text-decoration: none;
     font-weight: bold;
-    align-items: center;
+    align-items: end;
   }
 
   h1 {
@@ -60,6 +60,7 @@ export const HeaderRow = styled.div`
 
 export const NavMobile = styled.nav`
   display: none;
+  padding-top: 16px;
 
   &.is-open {
     display: block;
@@ -78,6 +79,14 @@ export const LinkItem = styled.li`
       text-align: center;
     }
   }
+
+  &.active a {
+    background-color: ${colors.color4}; /* Cor de destaque */
+    font-weight: bold;
+    border-radius: 8px;
+    color: ${colors.color2};
+    padding: 8px 0px;
+  }
 `
 
 export const CartButton = styled.span`
@@ -85,7 +94,6 @@ export const CartButton = styled.span`
   cursor: pointer;
 
   img {
-    margin-left: 16px;
   }
 
   @media (max-width: ${breakpoints.tablet}) {
@@ -104,7 +112,7 @@ export const Hamburguer = styled.div`
     display: block;
     width: 100%;
     background-color: ${colors.color1};
-    margin: 4px 0;
+    margin: 4px 0 0;
     border-radius: 8px;
   }
 

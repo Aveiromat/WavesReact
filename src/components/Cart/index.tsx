@@ -33,6 +33,7 @@ const Cart = () => {
     <S.CartContainer className={isOpen ? 'is-open' : ''}>
       <S.Overlay onClick={closeCart} />
       <S.Sidebar>
+        <button className="close-btn" onClick={closeCart} type="button" />
         {items.length > 0 ? (
           <>
             <ul>
